@@ -1,0 +1,30 @@
+body {
+  background-color: #b56576;
+}
+
+#buttons-container {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: center;
+  height: 300px;
+  margin-bottom: 0px;
+}
+
+#buttons-container button {
+  height: 40px;
+  width: 70px;
+}
+
+#results-container {
+  display: flex;
+  justify-content: center;
+}
+
+#result {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  margin-top: 20px;
+  width: 245px;
+}

@@ -1,5 +1,7 @@
 let playerScore = 0;
 let computerScore = 0;
+let buttons = document.querySelectorAll('button');
+let result = '';
 
 // Computer choice
 const getComputerChoice = () => {
@@ -16,49 +18,52 @@ const getComputerChoice = () => {
   }
 };
 
+function btnDisable() {
+  buttons.forEach(el => {
+    el.disabled = true;
+  });
+}
+
 // deciding who wins
-const playRound = function (playerSelection, computerSelection) {
-  console.log(playerSelection, computerSelection);
-  if (playerSelection === 'rock' && computerSelection === 'rock') {
-    return `It's a draw!`;
+const playRound = function (playerSelection) {
+  let computerSelection = getComputerChoice();
+  if (playerSelection === computerSelection) {
+    result = `It's a draw!\n
+       Player Score: ${playerScore}\n 
+       Computer Score: ${computerScore}`;
   } else if (
-    playerSelection === 'scissors' &&
-    computerSelection === 'scissors'
+    (playerSelection === 'rock' && computerSelection === 'scissors') ||
+    (playerSelection === 'paper' && computerSelection === 'rock') ||
+    (playerSelection === 'scissors' && computerSelection === 'paper')
   ) {
-    return `It's a draw!`;
-  } else if (playerSelection === 'paper' && computerSelection === 'paper') {
-    return `It's a draw!`;
-  } else if (playerSelection === 'paper' && computerSelection === 'rock') {
     playerScore++;
-    return `You Won!, rock beat paper`;
-  } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-    playerScore++;
-    return `You Won! rock beats scissors`;
-  } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-    playerScore++;
-    return `You Won! scissors beats paper`;
+    result = `You win! ${playerSelection} beats ${computerSelection}\n
+      Player Score: ${playerScore}\n
+      Computer Score: ${computerScore}`;
+    if (playerScore === 5) {
+      result = `You won the game!`;
+      btnDisable();
+    }
   } else if (
-    (playerSelection === 'paper') &
-    (computerSelection === 'scissors')
+    (playerSelection === 'paper' && computerSelection === 'scissors') ||
+    (playerSelection === 'rock' && computerSelection === 'paper') ||
+    (playerSelection === 'scissors' && computerSelection === 'rock')
   ) {
     computerScore++;
-    return `You Loose! scissors beats paper`;
-  } else if (playerSelection === 'rock' && computerSelection === 'paper') {
-    computerScore++;
-    return `You Loose! Rock beats Paper`;
-  } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
-    computerScore++;
-    return `You Loose! Rock beats scissors`;
+    result = `You lost! ${computerSelection} beats ${playerSelection}\n
+       Player Score: ${playerScore}\n
+       Computer Score: ${computerScore}`;
+    if (computerScore === 5) {
+      result = `Game Over`;
+      btnDisable();
+    }
   }
+  document.getElementById('result').innerText = result;
+  return;
 };
 
-const game = () => {
-  for (let i = 0; i < 5; i++) {
-    const computerSelection = getComputerChoice();
-    const playerSelection = prompt(`You choose`).toLowerCase();
-    console.log(playRound(playerSelection, computerSelection));
-  }
-};
-game();
-
-console.log(playerScore, computerScore);
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    playRound(button.value);
+  });
+});
