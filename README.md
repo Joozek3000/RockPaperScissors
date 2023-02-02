@@ -1,4 +1,4 @@
-Rock, Paper, Scissors Game Documentation
+<h1>Rock, Paper, Scissors Game </h1>
 
 This is a simple Rock, Paper, Scissors game implemented in JavaScript. The game allows two players to play the game (player and the computer) until one of them reaches 5 wins.
 Game Logic
@@ -11,14 +11,14 @@ The game logic is defined in the JavaScript code and is executed when the user c
     <li>The function uses if-else statements to compare the player's choice with the computer's choice and update the player's and computer's scores accordingly.</li>
     <li>The result of each round is displayed in the result element in the HTML.</li>
 </ol>
-Variables
+<h1>Variables</h1>
 <ul>
     <li>playerScore: The score of the player, initially set to 0.</li>
     <li>computerScore: The score of the computer, initially set to 0.</li>
     <li>buttons: A reference to all buttons in the HTML, retrieved using the querySelectorAll() function.</li>
     <li>result: A string that holds the result of each round, initially empty.</li>
 </ul>
-Functions
+<h1>Functions</h1>
 <ul>
     <li>getComputerChoice(): Returns the computer's choice (rock, paper, or scissors) using a random number generator.</li>
     <li>btnDisable(): Disables all buttons in the HTML to prevent further gameplay.</li>
