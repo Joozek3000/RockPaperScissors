@@ -1,5 +1,7 @@
 <h1>Rock, Paper, Scissors Game </h1>
 
+<a herf="https://joozek3000.github.io/rockPaperScissors/">Live Demo</a>
+
 This is a simple Rock, Paper, Scissors game implemented in JavaScript. The game allows two players to play the game (player and the computer) until one of them reaches 5 wins.
 Game Logic
 
